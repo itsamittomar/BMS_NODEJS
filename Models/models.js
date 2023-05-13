@@ -209,6 +209,10 @@ const Payment = sequelize.define('Payment', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    userId:{
+        type: DataTypes.INTEGER,
+        defaultValue: null
+    }
 });
 
 const Ticket = sequelize.define('Ticket', {
@@ -221,6 +225,7 @@ const Ticket = sequelize.define('Ticket', {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
+
 });
 
 // Associations
