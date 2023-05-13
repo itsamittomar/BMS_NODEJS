@@ -5,21 +5,21 @@ const utils = require('../Utils/payment.utils');
 
 class PaymentController {
     register(app){
-        app.route('/getMovie')
+        app.route('/get-payment/:PaymentId')
             .get(async (request, response , next)=>{
                 try{
-                    const id = request.body.CityId;
-                    const movies = await Movie.findAll({
-                        where: { id },
-                        include: City
+                    const id = request.params.PaymentId;
+                    const paymentDetails = await Payment.findAll({
+                        where: { id }
                     });
-                    if(movies.length === 0 || !movies){
+                    if(paymentDetails.length === 0 || !paymentDetails){
                         throw new NotFound(id)
                     }
 
-                    return response.json(movies).statusCode(200).message("Movies fetched successfully!!")
+                    return response.json(paymentDetails).status(200)
                 }
                 catch(error){
+                    console.log(error)
                     throw new exception("Something went wrong!!")
                 }
             })
