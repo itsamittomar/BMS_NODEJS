@@ -27,6 +27,4 @@ const port = process.env.PORT || 8008;
 app.listen(port , async () =>{
   console.log(`server started on port ${port} on ENV`)
 })
-
-
 module.exports = app;
