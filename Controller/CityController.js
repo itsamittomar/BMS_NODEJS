@@ -4,7 +4,7 @@ const {request, response} = require("express");
 const {canTreatArrayAsAnd} = require("sequelize/lib/utils");
 class CityController {
     register(app){
-        app.route('/getCity')
+        app.route('/get-city')
             .get(async (request, response , next)=>{
                 try{
                     const rows = await City.findAll()
@@ -23,7 +23,7 @@ class CityController {
                 }
             })
 
-        app.route('/addCity/:CityName')
+        app.route('/add-city/:CityName')
             .post(async (request, response , next) =>{
                 try{
                     const city = request.params.CityName;

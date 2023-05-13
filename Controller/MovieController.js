@@ -4,7 +4,7 @@ const { City , Movie } = require('../Models/models')
 
 class MovieController {
     register(app){
-        app.route('/getMovie')
+        app.route('/get-movie')
             .get(async (request, response , next)=>{
                 try{
                     const id = request.body.CityId;
@@ -23,7 +23,7 @@ class MovieController {
                 }
             })
 
-        app.route('/addMovie')
+        app.route('/add-movie')
             .post(async (request, response , next) =>{
                 try{
 

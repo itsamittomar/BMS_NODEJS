@@ -24,7 +24,7 @@ class PaymentController {
                 }
             })
 
-        app.route('/CompletePayment')
+        app.route('/complete-payment')
             .post(async (request, response , next) =>{
                 try{
                     const amount = request.body.amount;
