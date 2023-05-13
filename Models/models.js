@@ -225,6 +225,11 @@ const Ticket = sequelize.define('Ticket', {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
+    seatId:{
+        type:DataTypes.INTEGER,
+        allowNull:false,
+        defaultValue:0
+    }
 
 });
 
@@ -252,6 +257,9 @@ User.hasMany(Ticket);
 
 Ticket.belongsTo(Payment);
 Payment.hasOne(Ticket);
+
+Ticket.belongsTo(Seat);
+Seat.hasOne(Ticket);
 
 Movie.belongsTo(City);
 City.hasMany(Movie);

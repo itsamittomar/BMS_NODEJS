@@ -3,6 +3,7 @@ const CityController = require('../Controller/CityController');
 const MovieController = require('../Controller/MovieController');
 const PaymentController = require('../Controller/PaymentController');
 const UserController = require('../Controller/UserController');
+const TicketController = require('../Controller/TicketController')
 
 const router = express.Router()
 
@@ -17,5 +18,8 @@ paymentController.register(router)
 
 const userController = new UserController()
 userController.register(router)
+
+const ticketController = new TicketController()
+ticketController.register(router)
 
 module.exports = router;
