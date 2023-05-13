@@ -90,11 +90,11 @@ const Movie = sequelize.define('Movie', {
         allowNull: false,
     },
     movie_features: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.ENUM('2D' ,'3D' , 'Dolby' , '4D'),
         allowNull: false,
     },
     language: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.ENUM('ENGLISH' , "HINDI" , 'MARATHI' , 'TELUGU' , 'KANNADA'),
         allowNull: false,
     },
 }, {

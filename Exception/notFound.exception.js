@@ -1,4 +1,4 @@
-const BaseException = require('/base.exception')
+const BaseException = require('../Exception/base.exception')
 
 class NotFoundException extends BaseException{
     constructor(param) {

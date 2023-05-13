@@ -4,10 +4,10 @@ const { City , Movie } = require('../Models/models')
 
 class MovieController {
     register(app){
-        app.route('/getMovie/:CityId')
+        app.route('/getMovie')
             .get(async (request, response , next)=>{
                 try{
-                    const id = request.params.CityId;
+                    const id = request.body.CityId;
                     const movies = await Movie.findAll({
                         where: { id },
                         include: City
@@ -23,14 +23,31 @@ class MovieController {
                 }
             })
 
-        app.route('/addCity/:CityName')
+        app.route('/addMovie')
             .post(async (request, response , next) =>{
                 try{
-                    const City = request.params.CityName;
-                    const newCity = await City.create({
-                        name : City
+
+                    const name = request.body.name;
+                    const description = request.body.description;
+                    const duration = request.body.duration;
+                    const rating = request.body.rating;
+                    const releaseDate = request.body.release_date;
+                    const movieFeature = request.body.movie_features;
+                    const language = request.body.language;
+
+                    const MovieObject = await Movie.build({
+                        name : name,
+                        description : description,
+                        duration : duration,
+                        rating : rating,
+                        release_date : releaseDate,
+                        movie_features : movieFeature,
+                        language : language
+
                     })
-                    return response.statusCode(200).message(`${City} added to the database`)
+                    await MovieObject.save()
+
+                    return response.status(200).send(`${name} added to the database`)
                 }
                 catch(err){
                     throw new exception("Error while Adding city!!")
